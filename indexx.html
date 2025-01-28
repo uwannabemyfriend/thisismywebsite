@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6347;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ff4500;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1 -->
+    <div id="page1">
+        <h1>Hello, Visitor!</h1>
+        <p>Thanks for trusting us and clicking the link. (Don't worry, there's no scam here! All we ask is that you carefully read through all the pages because you were chosen.)</p>
+        <button onclick="nextPage(2)">Next</button>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page2" class="hidden">
+        <h1>Thank you for continuing!</h1>
+        <p>People like you are rare. I think you have a kind heart.</p>
+        <button onclick="nextPage(3)">Next</button>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="hidden">
+        <h1>People who enter our little web truly deserve our utmost respect.</h1>
+        <p>We are so grateful to you, but now, are you ready to begin our exciting story… with the best person in the world — you?</p>
+        <button onclick="nextPage(4)">Yes</button>
+    </div>
+
+    <!-- Page 4 -->
+    <div id="page4" class="hidden">
+        <h1>May I know your name?</h1>
+        <p>It seems like you must have a beautiful name!</p>
+        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <button onclick="nextPage(5)">Submit</button>
+    </div>
+
+    <!-- Page 5 -->
+    <div id="page5" class="hidden">
+        <h1>Hello, <span id="userName"></span>!</h1>
+        <p>I’m so glad to meet you! Would you like to get to know us better and become great friends? I feel like you’re truly amazing!</p>
+        <button onclick="nextPage(6)">Yes</button>
+    </div>
+
+    <!-- Page 6 -->
+    <div id="page6" class="hidden">
+        <h1>So, what do you think? Why were you chosen?</h1>
+        <p>Do you think it was just a random algorithm, or did artificial intelligence do this? Or maybe it's something that only someone like you could do?</p>
+        <button onclick="nextPage(7)">Yes</button>
+    </div>
+
+    <!-- Page 7 -->
+    <div id="page7" class="hidden">
+        <h1>Although I don’t know you well yet, I believe you can make everyone’s life more beautiful.</h1>
+        <p>I truly hope you shine in everything you do.</p>
+        <p>If you ever want to get in touch with us, feel free to send a message to the link we gave. Or if you don’t trust us yet, you can wait until we come back to you, because you’re the best!</p>
+        <button onclick="nextPage(8)">Finish</button>
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            // Hide all pages
+            const pages = document.querySelectorAll('div');
+            pages.forEach(page => page.classList.add('hidden'));
+
+            // Show the current page
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+
+            // If on Page 4, save the name
+            if (pageNumber === 5) {
+                const name = document.getElementById('nameInput').value;
+                document.getElementById('userName').innerText = name;
+            }
+        }
+
+        // Initialize on Page 1
+        nextPage(1);
+    </script>
+
+</body>
+</html>
